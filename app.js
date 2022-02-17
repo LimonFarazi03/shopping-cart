@@ -1,20 +1,28 @@
-function updateNumbers(isIncreasing){
-  const caseInput = document.getElementById('caseing-number');
-  let caseNumber = caseInput.value;
+function updateProductNumber(product,price,isIncreasing){
+  const productInput = document.getElementById(product +'-number');
+  let productNumber = productInput.value;
 
   if(isIncreasing == true){
-    caseNumber = parseInt(caseNumber) + 1;
-  }else if(caseNumber > 0){
-    caseNumber = parseInt(caseNumber) - 1;
+    productNumber = parseInt(productNumber) + 1;
+  }else if(productNumber > 0){
+    productNumber = parseInt(productNumber) - 1;
   }
-  caseInput.value = caseNumber;
+  productInput.value = productNumber;
   // Update Case Total
-  const caseingTotal = document.getElementById('caseing-total');
-  caseingTotal.innerText = caseNumber * 58;
+  const productTotal = document.getElementById(product +'-total');
+  productTotal.innerText = productNumber * price;
 }
+// Handle Phone Increase Decrese
+document.getElementById('phone-plus').addEventListener('click',function(){
+  updateProductNumber('phone',1219,true)
+});
+document.getElementById('phone-minas').addEventListener('click',function(){
+  updateProductNumber('phone',1219,false)
+});
+// Handle Caseing Increase Decrese 
 document.getElementById('caseing-plus').addEventListener('click',function(){
-  updateNumbers(true)
+  updateProductNumber('caseing',58,true)
 });
 document.getElementById('caseing-minas').addEventListener('click',function(){
-  updateNumbers()
+  updateProductNumber('caseing',58,false)
 });
